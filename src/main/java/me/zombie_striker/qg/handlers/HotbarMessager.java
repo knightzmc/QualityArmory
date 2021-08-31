@@ -10,7 +10,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.UUID;
-import java.util.logging.Level;
 
 public class HotbarMessager {
 
@@ -99,12 +98,10 @@ public class HotbarMessager {
     }
 
     private static void failsafe(String message) {
-        QAMain.getInstance().getLogger().log(Level.WARNING,
-                "HotBarMessager disabled! Something went wrong with: " + message);
-        QAMain.getInstance().getLogger().log(Level.WARNING, "Report this to Zombie_Striker");
-        QAMain.getInstance().getLogger().log(Level.WARNING, "Needed Information: " + Bukkit.getName() + ", "
+        QAMain.getInstance().getLogger().warning(() -> "HotBarMessager disabled! Something went wrong with: " + message);
+        QAMain.getInstance().getLogger().warning("Report this to Zombie_Striker");
+        QAMain.getInstance().getLogger().warning(() -> "Needed Information: " + Bukkit.getName() + ", "
                 + Bukkit.getVersion() + ", " + Bukkit.getBukkitVersion());
-        QAMain.getInstance().getLogger().log(Level.WARNING,
-                "https://github.com/ZombieStriker/PluginConstructorAPI");
+        QAMain.getInstance().getLogger().warning("https://github.com/ZombieStriker/PluginConstructorAPI");
     }
 }
