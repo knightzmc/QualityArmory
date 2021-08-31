@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import me.zombie_striker.customitemmanager.*;
 import me.zombie_striker.qg.handlers.HotbarMessager;
 import me.zombie_striker.qg.handlers.IronsightsHandler;
+import me.zombie_striker.qg.handlers.ReflectionsUtil;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -112,7 +113,7 @@ public class QualityArmory {
 						try {
 							try {
 								QAMain.DEBUG("Sending resourcepack : " + (QAMain.AutoDetectResourcepackVersion) + " || "
-										+ QAMain.MANUALLYSELECT18 + " || " + QAMain.isVersionHigherThan(1, 9) + " || ");
+										+ QAMain.MANUALLYSELECT18 + " || " + ReflectionsUtil.isVersionHigherThan(1, 9) + " || ");
 								try {
 									if (QAMain.hasViaVersion) {
 										QAMain.DEBUG(
@@ -129,7 +130,7 @@ public class QualityArmory {
 								player.setResourcePack(CustomItemManager.getResourcepack());
 							}
 
-							if (!QAMain.isVersionHigherThan(1, 9)) {
+							if (!ReflectionsUtil.isVersionHigherThan(1, 9)) {
 								QAMain.resourcepackReq.add(player.getUniqueId());
 								QAMain.sentResourcepack.put(player.getUniqueId(), System.currentTimeMillis());
 							}

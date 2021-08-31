@@ -3,6 +3,7 @@ package me.zombie_striker.qg.guns.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.zombie_striker.qg.handlers.ReflectionsUtil;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -69,7 +70,7 @@ public class GunRefillerRunnable {
 				if(player.getInventory().getHeldItemSlot()==slot) {
 					try {
 						player.getWorld().playSound(player.getLocation(), WeaponSounds.RELOAD_MAG_IN.getSoundName(), 1, 1f);
-						if (!QAMain.isVersionHigherThan(1, 9)) {
+						if (!ReflectionsUtil.isVersionHigherThan(1, 9)) {
 							try {
 								player.getWorld().playSound(player.getLocation(), Sound.valueOf("CLICK"), 5, 1);
 							} catch (Error | Exception e3) {

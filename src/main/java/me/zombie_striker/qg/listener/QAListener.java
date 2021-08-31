@@ -12,10 +12,7 @@ import me.zombie_striker.qg.attachments.AttachmentBase;
 import me.zombie_striker.qg.guns.Gun;
 import me.zombie_striker.qg.guns.utils.GunRefillerRunnable;
 import me.zombie_striker.qg.guns.utils.GunUtil;
-import me.zombie_striker.qg.handlers.BulletWoundHandler;
-import me.zombie_striker.qg.handlers.EconHandler;
-import me.zombie_striker.qg.handlers.IronsightsHandler;
-import me.zombie_striker.qg.handlers.Update19OffhandChecker;
+import me.zombie_striker.qg.handlers.*;
 import me.zombie_striker.qg.miscitems.MeleeItems;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -799,7 +796,7 @@ public class QAListener implements Listener {
 		if (e.getItem() != null) {
 			final ItemStack origin = e.getItem();
 			final int slot = e.getPlayer().getInventory().getHeldItemSlot();
-			if (!QAMain.isVersionHigherThan(1, 9)) {
+			if (!ReflectionsUtil.isVersionHigherThan(1, 9)) {
 				QAMain.DEBUG("1.8 item damage check");
 				ItemStack temp1 = null;
 				try {

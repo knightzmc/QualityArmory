@@ -7,6 +7,7 @@ import me.zombie_striker.qg.guns.reloaders.ReloadingHandler;
 import me.zombie_striker.qg.guns.reloaders.ReloadingManager;
 import me.zombie_striker.qg.guns.utils.WeaponSounds;
 import me.zombie_striker.qg.guns.utils.WeaponType;
+import me.zombie_striker.qg.handlers.ReflectionsUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
@@ -46,7 +47,7 @@ public class GunYML extends ArmoryYML {
 		verify("particles.bullet_particleData", 0);
 		verify("particles.bullet_particleMaterial", "COAL_BLOCK");
 
-		verify("Version_18_Support", !QAMain.isVersionHigherThan(1, 9));
+		verify("Version_18_Support", !ReflectionsUtil.isVersionHigherThan(1, 9));
 		verify("ChargingHandler", "none");
 		verify("ReloadingHandler", "none");
 		verify("addMuzzleSmoke", true);
