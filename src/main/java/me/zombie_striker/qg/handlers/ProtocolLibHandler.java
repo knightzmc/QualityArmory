@@ -4,10 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-
-import com.mojang.datafixers.util.Pair;
-import me.zombie_striker.qg.handlers.ReflectionsUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -19,6 +15,7 @@ import com.comphenix.protocol.events.*;
 
 import me.zombie_striker.qg.QAMain;
 import me.zombie_striker.qg.api.QualityArmory;
+import us.myles.ViaVersion.api.Pair;
 
 public class ProtocolLibHandler {
 
@@ -139,12 +136,14 @@ public class ProtocolLibHandler {
 								e.printStackTrace();
 							}
 							if(ReflectionsUtil.isVersionHigherThan(1,16)){
-								List list = (List) slot;
-								for(Object o : new ArrayList(list)){
+                                //noinspection unchecked
+                                List<Object> list = (List<Object>) slot;
+								for(Object o : new ArrayList<>(list)){
 									if(o.toString().contains("MAINHAND")) {
-										Pair pair = (Pair) o;
-										Pair newpair = new Pair(pair.getFirst(), is);
-										list.set(list.indexOf(pair), newpair);
+                                        //noinspection unchecked
+                                        Pair<Object, Object> pair = (Pair<Object, Object>) o;
+										Pair<Object, Object> newPair = new Pair<>(pair.getKey(), is);
+										list.set(list.indexOf(pair), newPair);
 									}else if(o.toString().contains("OFFHAND")) {
 										list.remove(list.indexOf(o));
 									}
