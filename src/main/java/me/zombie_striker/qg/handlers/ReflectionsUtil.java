@@ -16,7 +16,7 @@ public class ReflectionsUtil {
 
     // Deduce the net.minecraft.server.v* package
     private static final String OBC_PREFIX = Bukkit.getServer().getClass().getPackage().getName();
-    private static final String NMS_PREFIX = OBC_PREFIX.replace("org.bukkit.craftbukkit", "net.minecraft.server");
+    private static final String NMS_PREFIX;
     private static final String VERSION = OBC_PREFIX.replace("org.bukkit.craftbukkit", "").replace(".", "");
     // Variable replacement
     private static final Pattern MATCH_VARIABLE = Pattern.compile("\\{([^}]+)}");
@@ -31,6 +31,11 @@ public class ReflectionsUtil {
                 + "craftbukkit.".length());
         name = name.substring(0, name.indexOf("."));
         SERVER_VERSION = name;
+        if (isVersionHigherThan(1, 17)) {
+            NMS_PREFIX = "net.minecraft.server";
+        } else {
+            NMS_PREFIX = OBC_PREFIX.replace("org.bukkit.craftbukkit", "net.minecraft.server");
+        }
     }
 
     private ReflectionsUtil() {
