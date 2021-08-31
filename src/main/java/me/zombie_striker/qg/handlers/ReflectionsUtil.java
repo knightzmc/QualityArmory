@@ -26,6 +26,7 @@ public class ReflectionsUtil {
 
 
     static {
+
         String name = Bukkit.getServer().getClass().getName();
         name = name.substring(name.indexOf("craftbukkit.")
                 + "craftbukkit.".length());
@@ -356,6 +357,14 @@ public class ReflectionsUtil {
      */
     public static Class<?> getMinecraftClass(String name) {
         return getCanonicalClass(NMS_PREFIX + "." + name);
+    }
+
+    public static Class<?> getPacketClass(String name) {
+        if (isVersionHigherThan(1, 17)) {
+            return getCanonicalClass("net.minecraft.network.protocol" + name);
+        } else {
+            return getCanonicalClass(NMS_PREFIX + "." + name);
+        }
     }
 
     /**

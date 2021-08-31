@@ -1,5 +1,7 @@
 package me.zombie_striker.qg.handlers;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -35,13 +37,14 @@ public class HotbarMessager {
             // This here sets the class fields.
 
             CRAFTPLAYERCLASS = ReflectionsUtil.getCraftBukkitClass("entity.CraftPlayer");
-            PACKET_PLAYER_CHAT_CLASS = ReflectionsUtil.getMinecraftClass("PacketPlayOutChat");
-            PACKET_CLASS = ReflectionsUtil.getMinecraftClass("Packet");
+            PACKET_PLAYER_CHAT_CLASS = ReflectionsUtil.getPacketClass("PacketPlayOutChat");
+            PACKET_CLASS = ReflectionsUtil.getPacketClass("Packet");
             ICHATCOMP = ReflectionsUtil.getMinecraftClass("IChatBaseComponent");
             GETHANDLE = CRAFTPLAYERCLASS.getMethod("getHandle");
             PLAYERCONNECTION = GETHANDLE.getReturnType().getField("playerConnection");
             SENDPACKET = PLAYERCONNECTION.getType().getMethod("sendPacket", PACKET_CLASS);
             try {
+
                 CHAT_MESSAGE_TYPE_CLASS = ReflectionsUtil.getMinecraftClass("ChatMessageType");
                 CHAT_MESSAGE_TYPE_ENUM_OBJECT = CHAT_MESSAGE_TYPE_CLASS.getEnumConstants()[2];
                 try {
@@ -66,12 +69,12 @@ public class HotbarMessager {
 
     /**
      * Sends the hotbar message 'message' to the player 'player'
-     *
-     * @param player
-     * @param message
-     * @throws Exception
      */
     public static void sendHotBarMessage(Player player, String message) throws Exception {
+        if (ReflectionsUtil.isVersionHigherThan(1, 13)) {
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
+            return;
+        }
         try {
             // This creates the IChatComponentBase instance
             Object icb = CHATMESSAGE_CONSTRUCTOR.newInstance(message, new Object[0]);
