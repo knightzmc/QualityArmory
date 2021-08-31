@@ -85,7 +85,7 @@
         <!--You only need one of the two, don't put both. Spigot is recommended.-->
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
+            <artifactId>spigot-api</artifactId>
             <version>1.15-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -162,7 +162,7 @@
         <dependency>
             <groupId>com.alessiodp.parties</groupId>
             <artifactId>parties-api</artifactId>
-            <version>3.0.0-rc.1</version>
+            <version>3.1.9</version>
         </dependency>
 
         <!-- PluginConstructorAPI -->
