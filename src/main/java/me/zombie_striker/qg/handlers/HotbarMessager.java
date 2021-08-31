@@ -1,5 +1,6 @@
 package me.zombie_striker.qg.handlers;
 
+import me.zombie_striker.qg.QAMain;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -14,7 +15,6 @@ import java.util.logging.Level;
 public class HotbarMessager {
 
     // This is the server version. This is how we know the server version.
-    private static final String SERVER_VERSION;
     // These are the Class instances. Needed to get fields or methods for classes.
     private static Class<?> CRAFTPLAYERCLASS, PACKET_PLAYER_CHAT_CLASS, ICHATCOMP, CHATMESSAGE, PACKET_CLASS,
             CHAT_MESSAGE_TYPE_CLASS;
@@ -24,46 +24,43 @@ public class HotbarMessager {
     private static Constructor<?> PACKET_PLAYER_CHAT_CONSTRUCTOR, CHATMESSAGE_CONSTRUCTOR;
     // Used in 1.12+. Bytes are replaced with this enum
     private static Object CHAT_MESSAGE_TYPE_ENUM_OBJECT;
-    private static Class CHAT_MESSAGE_TYPE;
+    private static Class<?> CHAT_MESSAGE_TYPE;
     private static int PacketConstructorType = 0;
 
     static {
-        // This gets the server version.
-        String name = Bukkit.getServer().getClass().getName();
-        name = name.substring(name.indexOf("craftbukkit.") + "craftbukkit.".length());
-        name = name.substring(0, name.indexOf("."));
-        SERVER_VERSION = name;
-        try {
-            // This here sets the class fields.
-
-            CRAFTPLAYERCLASS = ReflectionsUtil.getCraftBukkitClass("entity.CraftPlayer");
-            PACKET_PLAYER_CHAT_CLASS = ReflectionsUtil.getPacketClass("PacketPlayOutChat");
-            PACKET_CLASS = ReflectionsUtil.getPacketClass("Packet");
-            ICHATCOMP = ReflectionsUtil.getMinecraftClass("IChatBaseComponent");
-            GETHANDLE = CRAFTPLAYERCLASS.getMethod("getHandle");
-            PLAYERCONNECTION = GETHANDLE.getReturnType().getField("playerConnection");
-            SENDPACKET = PLAYERCONNECTION.getType().getMethod("sendPacket", PACKET_CLASS);
+        if (!ReflectionsUtil.isVersionHigherThan(1, 13)) {
             try {
+                // This here sets the class fields.
 
-                CHAT_MESSAGE_TYPE_CLASS = ReflectionsUtil.getMinecraftClass("ChatMessageType");
-                CHAT_MESSAGE_TYPE_ENUM_OBJECT = CHAT_MESSAGE_TYPE_CLASS.getEnumConstants()[2];
+                CRAFTPLAYERCLASS = ReflectionsUtil.getCraftBukkitClass("entity.CraftPlayer");
+                PACKET_PLAYER_CHAT_CLASS = ReflectionsUtil.getPacketClass("PacketPlayOutChat");
+                PACKET_CLASS = ReflectionsUtil.getPacketClass("Packet");
+                ICHATCOMP = ReflectionsUtil.getMinecraftClass("IChatBaseComponent");
+                GETHANDLE = CRAFTPLAYERCLASS.getMethod("getHandle");
+                PLAYERCONNECTION = GETHANDLE.getReturnType().getField("playerConnection");
+                SENDPACKET = PLAYERCONNECTION.getType().getMethod("sendPacket", PACKET_CLASS);
                 try {
-                    PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP,
-                            CHAT_MESSAGE_TYPE_CLASS, UUID.class);
-                    PacketConstructorType = 2;
-                } catch (NoSuchMethodException notFound) {
-                    PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP,
-                            CHAT_MESSAGE_TYPE_CLASS);
-                    PacketConstructorType = 1;
+
+                    CHAT_MESSAGE_TYPE_CLASS = ReflectionsUtil.getMinecraftClass("ChatMessageType");
+                    CHAT_MESSAGE_TYPE_ENUM_OBJECT = CHAT_MESSAGE_TYPE_CLASS.getEnumConstants()[2];
+                    try {
+                        PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP,
+                                CHAT_MESSAGE_TYPE_CLASS, UUID.class);
+                        PacketConstructorType = 2;
+                    } catch (NoSuchMethodException notFound) {
+                        PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP,
+                                CHAT_MESSAGE_TYPE_CLASS);
+                        PacketConstructorType = 1;
+                    }
+                } catch (IllegalArgumentException | NoSuchMethodException e) {
+                    PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP, byte.class);
+                    PacketConstructorType = 0;
                 }
-            } catch (IllegalArgumentException | NoSuchMethodException e) {
-                PACKET_PLAYER_CHAT_CONSTRUCTOR = PACKET_PLAYER_CHAT_CLASS.getConstructor(ICHATCOMP, byte.class);
-                PacketConstructorType = 0;
+                CHATMESSAGE = ReflectionsUtil.getMinecraftClass("ChatMessage");
+                CHATMESSAGE_CONSTRUCTOR = CHATMESSAGE.getConstructor(String.class, Object[].class);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            CHATMESSAGE = ReflectionsUtil.getMinecraftClass("ChatMessage");
-            CHATMESSAGE_CONSTRUCTOR = CHATMESSAGE.getConstructor(String.class, Object[].class);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -102,12 +99,12 @@ public class HotbarMessager {
     }
 
     private static void failsafe(String message) {
-        Bukkit.getLogger().log(Level.WARNING,
-                "[PluginConstructorAPI] HotBarMessager disabled! Something went wrong with: " + message);
-        Bukkit.getLogger().log(Level.WARNING, "[PluginConstructorAPI] Report this to Zombie_Striker");
-        Bukkit.getLogger().log(Level.WARNING, "[PluginConstructorAPI] Needed Information: " + Bukkit.getName() + ", "
+        QAMain.getInstance().getLogger().log(Level.WARNING,
+                "HotBarMessager disabled! Something went wrong with: " + message);
+        QAMain.getInstance().getLogger().log(Level.WARNING, "Report this to Zombie_Striker");
+        QAMain.getInstance().getLogger().log(Level.WARNING, "Needed Information: " + Bukkit.getName() + ", "
                 + Bukkit.getVersion() + ", " + Bukkit.getBukkitVersion());
-        Bukkit.getLogger().log(Level.WARNING,
-                "[PluginConstructorAPI] https://github.com/ZombieStriker/PluginConstructorAPI");
+        QAMain.getInstance().getLogger().log(Level.WARNING,
+                "https://github.com/ZombieStriker/PluginConstructorAPI");
     }
 }
