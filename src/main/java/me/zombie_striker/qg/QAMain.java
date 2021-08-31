@@ -58,10 +58,11 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
+import static me.zombie_striker.qg.handlers.ReflectionsUtil.isVersionHigherThan;
+
 public class QAMain extends JavaPlugin {
 
 	public static final int ViaVersionIdfor_1_8 = 106;
-	private static final String SERVER_VERSION;
 	// Chris: change to LinkedHashMap let the Items can sort by FileName.
 	public static HashMap<MaterialStorage, Gun> gunRegister = new LinkedHashMap<>();
 	public static HashMap<MaterialStorage, Ammo> ammoRegister = new LinkedHashMap<>();
@@ -234,13 +235,6 @@ public class QAMain extends JavaPlugin {
 	public static List<UUID> currentlyScoping = new ArrayList<>();
 	private static QAMain main;
 
-	static {
-		String name = Bukkit.getServer().getClass().getName();
-		name = name.substring(name.indexOf("craftbukkit.") + "craftbukkit.".length());
-		name = name.substring(0, name.indexOf("."));
-		SERVER_VERSION = name;
-	}
-
 	private TreeFellerHandler tfh = null;
 	private FileConfiguration config;
 	private File configFile;
@@ -249,22 +243,6 @@ public class QAMain extends JavaPlugin {
 	public static QAMain getInstance() {
 		return main;
 	}
-
-	public static boolean isVersionHigherThan(int mainVersion, int secondVersion) {
-		String firstChar = SERVER_VERSION.substring(1, 2);
-		int fInt = Integer.parseInt(firstChar);
-		if (fInt < mainVersion)
-			return false;
-		StringBuilder secondChar = new StringBuilder();
-		for (int i = 3; i < 10; i++) {
-			if (SERVER_VERSION.charAt(i) == '_' || SERVER_VERSION.charAt(i) == '.')
-				break;
-			secondChar.append(SERVER_VERSION.charAt(i));
-		}
-
-		int sInt = Integer.parseInt(secondChar.toString());
-        return sInt >= secondVersion;
-    }
 
 	public static void toggleNightvision(Player player, Gun g, boolean add) {
 		if (add) {

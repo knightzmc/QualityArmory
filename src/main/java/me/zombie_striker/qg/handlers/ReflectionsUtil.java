@@ -19,7 +19,7 @@ public class ReflectionsUtil {
 	private static final String NMS_PREFIX = OBC_PREFIX.replace("org.bukkit.craftbukkit", "net.minecraft.server");
 	private static final String VERSION = OBC_PREFIX.replace("org.bukkit.craftbukkit", "").replace(".", "");
 	// Variable replacement
-	private static final Pattern MATCH_VARIABLE = Pattern.compile("\\{([^\\}]+)\\}");
+	private static final Pattern MATCH_VARIABLE = Pattern.compile("\\{([^}]+)}");
 
 
 	private static final String SERVER_VERSION;
@@ -373,14 +373,10 @@ public class ReflectionsUtil {
 				if (name.equals(invokeMethod(o, "name", new Class[0]))) {
 					return o;
 				}
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
+			} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
 			}
-		}
+        }
 		return null;
 	}
 	/**

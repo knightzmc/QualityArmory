@@ -186,7 +186,7 @@ public class GunUtil {
 						if (QAMain.headshotPling) {
 							try {
 								p.playSound(p.getLocation(), QAMain.headshot_sound, 2, 1);
-								if (!QAMain.isVersionHigherThan(1, 9))
+								if (!ReflectionsUtil.isVersionHigherThan(1, 9))
 									try {
 										p.playSound(p.getLocation(), Sound.valueOf("LAVA_POP"), 6, 1);
 									} catch (Error | Exception h4) {
@@ -617,7 +617,7 @@ public class GunUtil {
 						soundname = g.getWeaponSound();
 					}
 					player.getWorld().playSound(player.getLocation(), soundname, (float) g.getVolume(), 1);
-					if (!QAMain.isVersionHigherThan(1, 9)) {
+					if (!ReflectionsUtil.isVersionHigherThan(1, 9)) {
 						try {
 							player.getWorld().playSound(player.getLocation(), Sound.valueOf("CLICK"), 5, 1);
 							player.getWorld().playSound(player.getLocation(), Sound.valueOf("WITHER_SHOOT"), 8, 2);
@@ -709,7 +709,7 @@ public class GunUtil {
 				new BukkitRunnable() {
 					@Override
 					public void run() {
-						if (QAMain.hasProtocolLib && QAMain.isVersionHigherThan(1, 13) && !QAMain.hasViaVersion) {
+						if (QAMain.hasProtocolLib && ReflectionsUtil.isVersionHigherThan(1, 13) && !QAMain.hasViaVersion) {
 							addRecoilWithProtocolLib(player, g, true);
 						} else
 							addRecoilWithTeleport(player, g, true);
@@ -717,7 +717,7 @@ public class GunUtil {
 				}.runTaskLater(QAMain.getInstance(), 3);
 			}
 		} else {
-			if (QAMain.hasProtocolLib && QAMain.isVersionHigherThan(1, 13)) {
+			if (QAMain.hasProtocolLib && ReflectionsUtil.isVersionHigherThan(1, 13)) {
 				addRecoilWithProtocolLib(player, g, false);
 			} else
 				addRecoilWithTeleport(player, g, false);
