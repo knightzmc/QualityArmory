@@ -263,10 +263,8 @@ public class QAMain extends JavaPlugin {
 		}
 
 		int sInt = Integer.parseInt(secondChar.toString());
-		if (sInt < secondVersion)
-			return false;
-		return true;
-	}
+        return sInt >= secondVersion;
+    }
 
 	public static void toggleNightvision(Player player, Gun g, boolean add) {
 		if (add) {
@@ -1002,7 +1000,7 @@ public class QAMain extends JavaPlugin {
 		allowGunReload = (boolean) a("allowGunReload", allowGunReload);
 		AutoDetectResourcepackVersion = (boolean) a("Auto-Detect-Resourcepack", AutoDetectResourcepackVersion);
 		MANUALLYSELECT18 = (boolean) a("ManuallyOverrideTo_1_8_systems",
-				Bukkit.getPluginManager().isPluginEnabled("WetSponge") ? true : MANUALLYSELECT18);
+                Bukkit.getPluginManager().isPluginEnabled("WetSponge") || MANUALLYSELECT18);
 		MANUALLYSELECT113 = (boolean) a("ManuallyOverrideTo_1_13_systems", MANUALLYSELECT113);
 		MANUALLYSELECT14 = (boolean) a("ManuallyOverrideTo_1_14_systems", MANUALLYSELECT14);
 
@@ -1434,7 +1432,7 @@ public class QAMain extends JavaPlugin {
 							sb.append(g.getName() + ", ");
 						}
 						sb.append(ChatColor.WHITE);
-						sender.sendMessage(prefix + sb.toString());
+						sender.sendMessage(prefix + sb);
 						return true;
 					}
 
@@ -1530,7 +1528,7 @@ public class QAMain extends JavaPlugin {
 						// for (AttachmentBase g : attachmentRegister.values()) {
 						// sb.append(g.getAttachmentName() + ",");
 						// }
-						sender.sendMessage(prefix + sb.toString());
+						sender.sendMessage(prefix + sb);
 						return true;
 					}
 
@@ -1552,10 +1550,10 @@ public class QAMain extends JavaPlugin {
 						ItemStack temp;
 
 						if (g instanceof Gun) {
-							temp =CustomItemManager.getItemType("gun").getItem(g.getItemData().getMat(),g.getItemData().getData(),g.getItemData().getVariant());;
-							who.getInventory().addItem(temp);
+							temp =CustomItemManager.getItemType("gun").getItem(g.getItemData().getMat(),g.getItemData().getData(),g.getItemData().getVariant());
+                            who.getInventory().addItem(temp);
 						} else if (g instanceof Ammo) {
-							int amount = ((Ammo) g).getMaxItemStack();
+							int amount = g.getMaxItemStack();
 							if(args.length > 3)
 								amount = Integer.parseInt(args[3]);
 							QualityArmory.addAmmoToInventory(who, (Ammo) g, amount);

@@ -6,8 +6,8 @@ import me.zombie_striker.qg.guns.Gun;
 
 public class AttachmentBase extends Gun {
 
-	private MaterialStorage base;
-	private Gun baseGun;
+	private final MaterialStorage base;
+	private final Gun baseGun;
 	private String newName = null;
 
 	/*

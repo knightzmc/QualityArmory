@@ -100,7 +100,7 @@ public class ProtocolLibHandler {
 						}
 						Player who = null;
 						for (Player player : sender.getWorld().getPlayers()) {
-							if (player.getEntityId() == (int) id) {
+							if (player.getEntityId() == id) {
 								who = player;
 								break;
 							}
@@ -121,7 +121,7 @@ public class ProtocolLibHandler {
 								if (!QualityArmory.getGun(who.getInventory().getItemInOffHand()).hasBetterAimingAnimations())
 									return;
 								is = getCraftItemStack(who.getInventory().getItemInOffHand());
-								Object nbtTag = is.getClass().getMethod("getOrCreateTag").invoke(is, new Object[0]);
+								Object nbtTag = is.getClass().getMethod("getOrCreateTag").invoke(is);
 								//new NBTTagCompound().
 								Class[] args = new Class[2];
 								args[0] = String.class;
@@ -145,7 +145,7 @@ public class ProtocolLibHandler {
 										Pair<Object, Object> newPair = new Pair<>(pair.getKey(), is);
 										list.set(list.indexOf(pair), newPair);
 									}else if(o.toString().contains("OFFHAND")) {
-										list.remove(list.indexOf(o));
+										list.remove(o);
 									}
 								}
 								event.getPacket().getModifier().write(1, list);

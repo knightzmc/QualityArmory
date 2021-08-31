@@ -90,9 +90,6 @@ public class SkullHandler {
 				break;
 			}
 		}
-		if (tex64 != null) {
-			return tex64;
-		}
-		return null;
-	}
+        return tex64;
+    }
 }

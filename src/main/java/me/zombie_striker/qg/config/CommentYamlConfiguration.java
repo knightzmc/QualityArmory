@@ -7,18 +7,18 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
- 
+
 import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
- 
+
 public class CommentYamlConfiguration extends YamlConfiguration {
-	
-    private Map<Integer, String> comments = Maps.newHashMap();
+
+    private final Map<Integer, String> comments = Maps.newHashMap();
     @Override
     public void load(Reader reader) throws IOException, InvalidConfigurationException {
         StringBuilder builder = new StringBuilder();
- 
+
         String line;
         try (BufferedReader input = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader)) {
             int index = 0;
@@ -33,7 +33,7 @@ public class CommentYamlConfiguration extends YamlConfiguration {
         }
         this.loadFromString(builder.toString());
     }
- 
+
     @Override
     public void save(File file) throws IOException {
         Validate.notNull(file, "File cannot be null");
@@ -54,24 +54,24 @@ public class CommentYamlConfiguration extends YamlConfiguration {
                     }
                 }
             }
-            data = stringBuilder.toString().substring(1);
+            data = stringBuilder.substring(1);
         }
- 
+
         try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8)) {
             writer.write(data);
         }
     }
- 
+
     @Override
     protected String buildHeader() {
         return "";
     }
- 
+
     @Override
     protected String parseHeader(String input) {
         return "";
     }
- 
+
     public static YamlConfiguration loadConfiguration(File file) {
         Validate.notNull(file, "File cannot be null");
         YamlConfiguration config = new CommentYamlConfiguration();
@@ -88,7 +88,7 @@ public class CommentYamlConfiguration extends YamlConfiguration {
         } catch (IOException | InvalidConfigurationException var4) {
             Bukkit.getLogger().log(Level.SEVERE, "Cannot load " + file, var4);
         }
- 
+
         return config;
     }
 }

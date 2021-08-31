@@ -18,7 +18,7 @@ import me.zombie_striker.qg.handlers.Update19OffhandChecker;
 
 public class GunRefillerRunnable {
 
-	private static List<GunRefillerRunnable> allGunRefillers = new ArrayList<>();
+	private static final List<GunRefillerRunnable> allGunRefillers = new ArrayList<>();
 
 	public static boolean hasItemReloaded(Player reloader, ItemStack is) {
 		for (GunRefillerRunnable s : allGunRefillers) {
@@ -33,7 +33,7 @@ public class GunRefillerRunnable {
 		return hasItemReloaded(null,is);
 	}
 
-	private BukkitTask r;
+	private final BukkitTask r;
 	private ItemStack reloadedItem;
 	private int originalAmount = 0;
 	private int addedAmount = 0;

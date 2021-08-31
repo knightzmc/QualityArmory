@@ -151,39 +151,39 @@ public class CustomGunItem extends AbstractCustomGunItem {
 	public void initItems(File dataFolder) {
 
 
-		List<String> stringsWoodRif = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 12),
-				getIngString(MultiVersionLookup.getWood(), 0, 2), getIngString(Material.REDSTONE, 0, 5)});
-		List<String> stringsGoldRif = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 12),
-				getIngString(Material.GOLD_INGOT, 0, 2), getIngString(Material.REDSTONE, 0, 5)});
+		List<String> stringsWoodRif = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 12),
+                getIngString(MultiVersionLookup.getWood(), 0, 2), getIngString(Material.REDSTONE, 0, 5));
+		List<String> stringsGoldRif = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 12),
+                getIngString(Material.GOLD_INGOT, 0, 2), getIngString(Material.REDSTONE, 0, 5));
 		List<String> stringsMetalRif = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 15), getIngString(Material.REDSTONE, 0, 5)});
+                getIngString(Material.IRON_INGOT, 0, 15), getIngString(Material.REDSTONE, 0, 5));
 		List<String> stringsPistol = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.REDSTONE, 0, 2)});
+                getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.REDSTONE, 0, 2));
 		List<String> stringsRPG = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 32), getIngString(Material.REDSTONE, 0, 10)});
+                getIngString(Material.IRON_INGOT, 0, 32), getIngString(Material.REDSTONE, 0, 10));
 
 		List<String> stringsHelmet = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.OBSIDIAN, 0, 1)});
+                getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.OBSIDIAN, 0, 1));
 
-		List<String> stringsGrenades = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 6),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 10)});
+		List<String> stringsGrenades = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 6),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 10));
 
-		List<String> stringsAmmo = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 1),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 1), getIngString(Material.REDSTONE, 0, 1)});
-		List<String> stringsAmmoMusket = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 4),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 3),});
-		List<String> stringsAmmoRPG = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 4),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 6), getIngString(Material.REDSTONE, 0, 1)});
+		List<String> stringsAmmo = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 1),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 1), getIngString(Material.REDSTONE, 0, 1));
+		List<String> stringsAmmoMusket = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 4),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 3));
+		List<String> stringsAmmoRPG = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 4),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 6), getIngString(Material.REDSTONE, 0, 1));
 
-		List<String> StringsWool = Arrays.asList(new String[]{getIngString(MultiVersionLookup.getWool(), 0, 8)});
+		List<String> StringsWool = Arrays.asList(getIngString(MultiVersionLookup.getWool(), 0, 8));
 
-		List<String> stringsHealer = Arrays.asList(new String[]{getIngString(MultiVersionLookup.getWool(), 0, 6),
-				getIngString(Material.GOLDEN_APPLE, 0, 1)});
+		List<String> stringsHealer = Arrays.asList(getIngString(MultiVersionLookup.getWool(), 0, 6),
+                getIngString(Material.GOLDEN_APPLE, 0, 1));
 		List<String> stringsMini = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 10), getIngString(Material.TNT, 0, 16)});
+                getIngString(Material.IRON_INGOT, 0, 10), getIngString(Material.TNT, 0, 16));
 
-		List<String> strings10mm = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 10),
-				getIngString(Material.REDSTONE, 0, 4)});
+		List<String> strings10mm = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 10),
+                getIngString(Material.REDSTONE, 0, 4));
 
 
 		GunYMLCreator.createAmmo(false, dataFolder, false, "9mm", "&f9mm", Material.PHANTOM_MEMBRANE, 1, stringsAmmo, 2, 0.7, 50,
@@ -205,7 +205,7 @@ public class CustomGunItem extends AbstractCustomGunItem {
 		GunYMLCreator
 				.createAmmo(false, dataFolder, false, "default_flamerfuel", "fuel", "&fFlamerFuel", null,
 						Material.BLAZE_POWDER, 0,
-						Arrays.asList(new String[]{getIngString(Material.BLAZE_ROD, 0, 1),}), 1, 1, 64, 2)
+						Arrays.asList(getIngString(Material.BLAZE_ROD, 0, 1)), 1, 1, 64, 2)
 				.setVariant(1).done();
 
 		//BACKPACK GREEN
@@ -340,12 +340,12 @@ public class CustomGunItem extends AbstractCustomGunItem {
 		GunYMLCreator
 				.createAttachment(false, dataFolder, false, "default_p30_silencer", "p30silenced",
 						"P30[Silenced]", null, m(23),  Arrays.asList(
-								new String[]{getIngString(Material.IRON_INGOT, 0, 4), "p30"}), 1000, "p30").setReloadingHandler(ReloadingManager.SLIDE_RELOAD)
+                                getIngString(Material.IRON_INGOT, 0, 4), "p30"), 1000, "p30").setReloadingHandler(ReloadingManager.SLIDE_RELOAD)
 				.setWeaponSound(WeaponSounds.SILENCEDSHOT).setMaterial(Material.CROSSBOW).done();
 		GunYMLCreator
 				.createAttachment(false, dataFolder, false, "default_awp_asiimov", "awpasiimov",
 						"AWP[Asiimov-skin]", null, m(24), Arrays.asList(
-								new String[]{getIngString(Material.WHITE_DYE, 0, 1), "awp"}), 1000, "awp").setMaterial(Material.CROSSBOW)
+                                getIngString(Material.WHITE_DYE, 0, 1), "awp"), 1000, "awp").setMaterial(Material.CROSSBOW)
 				.setUseOffhand(false).done();
 
 		GunYMLCreator
@@ -410,8 +410,8 @@ public class CustomGunItem extends AbstractCustomGunItem {
 		 */
 
 
-		List<String> stringsFatman = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 32),
-				getIngString(Material.REDSTONE, 0, 16), getIngString(Material.BLAZE_POWDER, 0, 8)});
+		List<String> stringsFatman = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 32),
+                getIngString(Material.REDSTONE, 0, 16), getIngString(Material.BLAZE_POWDER, 0, 8));
 
 		GunYMLCreator
 				.createNewDefaultGun(dataFolder, "lazerrifle", "Lazer Rifle", 32, stringsMetalRif,
@@ -443,10 +443,10 @@ public class CustomGunItem extends AbstractCustomGunItem {
 						WeaponType.RIFLE, WeaponSounds.GUN_AUTO, true, "musketball", 10, 1, 100)
 				.setSway(0.3).setDelayReload(5).setDelayShoot(1).setSwayMultiplier(3).setRecoil(3).setMaterial(Material.CROSSBOW).done();
 
-		List<String> stringsRifle = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 8),
-				getIngString(Material.REDSTONE, 0, 3)});
-		List<String> stringsLight = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 8),
-				getIngString(Material.NETHER_STAR, 0, 1)});
+		List<String> stringsRifle = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 8),
+                getIngString(Material.REDSTONE, 0, 3));
+		List<String> stringsLight = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 8),
+                getIngString(Material.NETHER_STAR, 0, 1));
 
 		GunYMLCreator
 				.createNewCustomGun(dataFolder, "default_aliensrifle", "m41pulserifle",
@@ -651,7 +651,7 @@ public class CustomGunItem extends AbstractCustomGunItem {
 		GunYMLCreator
 				.createAttachment(false, dataFolder, false, "default_uzicorn", "uzicorn",
 						"Uzicorn", null, m(75),  Arrays.asList(
-								new String[]{getIngString(Material.WHITE_WOOL, 0, 6), "uzi"}), 2400, "uzi")
+                                getIngString(Material.WHITE_WOOL, 0, 6), "uzi"), 2400, "uzi")
 				.setKilledByMessage("%player% was surprised by %killer% using a %name%")
 				.setReloadingHandler(ReloadingManager.SLIDE_RELOAD)
 				.setWeaponSound(WeaponSounds.SILENCEDSHOT).setMaterial(Material.CROSSBOW).done();

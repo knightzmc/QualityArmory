@@ -59,7 +59,7 @@ public class IncendaryGrenades extends Grenade {
 				QAMain.DEBUG("Fireticks");
 				if (k == 1) {
 					if (h.getHolder() instanceof Player) {
-						((LivingEntity) h.getHolder()).setFireTicks(h.getHolder().getMaxFireTicks()/5);
+						h.getHolder().setFireTicks(h.getHolder().getMaxFireTicks()/5);
 						removeGrenade(((Player) h.getHolder()));
 					}
 				} else if (k == 40) {
@@ -69,7 +69,7 @@ public class IncendaryGrenades extends Grenade {
 					throwItems.remove(h.getHolder());
 					this.cancel();
 				} else {
-					for(Entity e : h.getHolder().getNearbyEntities(radius, radius, radius)) 
+					for(Entity e : h.getHolder().getNearbyEntities(radius, radius, radius))
 						if(e instanceof LivingEntity) {
 							QAMain.DEBUG("Firedamage to "+e.getName());
 							try {

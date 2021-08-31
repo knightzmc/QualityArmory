@@ -11,9 +11,9 @@ public class QAWeaponDamageBlockEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 
 	private boolean cancel = false;
-	private Player player;
-	private Gun g;
-	private Block damaged;
+	private final Player player;
+	private final Gun g;
+	private final Block damaged;
 
 	public QAWeaponDamageBlockEvent(Player p, Gun g, Block damaged) {
 		this.player = p;

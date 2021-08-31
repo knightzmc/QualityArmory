@@ -31,7 +31,7 @@ public class HomingRocketProjectile implements RealtimeCalculationProjectile {
 	@Override
 	public void spawn(final Gun g, final Location starting, final Player player, final Vector dir) {
 		new BukkitRunnable() {
-			Location RPGLOCATION = starting.clone();
+			final Location RPGLOCATION = starting.clone();
 			int distance = g.getMaxDistance();
 			Vector vect = dir;
 

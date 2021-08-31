@@ -21,9 +21,7 @@ public class BulletProtectionUtil {
 					} else {
 						if (velocity.getY() < 0) {
 							Vector fourth = velocity.normalize().multiply(0.25);
-							if (bullet.clone().add(fourth).getY() < armor.getMaxH() + offset) {
-								return true;
-							}
+                            return bullet.clone().add(fourth).getY() < armor.getMaxH() + offset;
 						} else {
 							return false;
 						}
@@ -32,9 +30,7 @@ public class BulletProtectionUtil {
 					if (velocity.getY() > 0) {
 
 						Vector fourth = velocity.normalize().multiply(0.25);
-						if (bullet.clone().add(fourth).getY() > armor.getMinH() + offset) {
-							return true;
-						}
+                        return bullet.clone().add(fourth).getY() > armor.getMinH() + offset;
 					} else {
 						return false;
 					}
@@ -43,7 +39,7 @@ public class BulletProtectionUtil {
 		}
 		return false;
 	}
-	
+
 	public static boolean  negatesHeadshot(Player p) {
 		if (p.getInventory().getHelmet() != null) {
 			if (QualityArmory.isArmor(p.getInventory().getHelmet())) {

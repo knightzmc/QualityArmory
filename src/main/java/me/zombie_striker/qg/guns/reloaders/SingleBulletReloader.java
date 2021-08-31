@@ -35,7 +35,7 @@ public class SingleBulletReloader implements ReloadingHandler {
 		for (int i = 0; i < amountReloading; i++) {
 			final int finalI = i;
 			new BukkitRunnable() {
-				int temp = player.getInventory().getHeldItemSlot();
+				final int temp = player.getInventory().getHeldItemSlot();
 				@Override
 				public void run() {
 					if(player.getInventory().getHeldItemSlot()!=temp)

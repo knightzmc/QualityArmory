@@ -48,11 +48,8 @@ public class IronsightsHandler {
 	}
 
 	public static boolean isAiming(Player player){
-			if(QualityArmory.isIronSights(player.getItemInHand())){
-				return true;
-			}
-		return false;
-	}
+        return QualityArmory.isIronSights(player.getItemInHand());
+    }
 	public static ItemStack getItemAiming(Player player) {
 			if (!QualityArmory.isIronSights(player.getItemInHand())) {
 				return player.getItemInHand();

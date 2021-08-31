@@ -5,8 +5,8 @@ import java.util.Set;
 
 public class AmmoType {
 
-	private static HashMap<String, Ammo> ammoHolder = new HashMap<>();
-	
+	private static final HashMap<String, Ammo> ammoHolder = new HashMap<>();
+
 	public static void addAmmo(Ammo ammo, String key) {
 		ammoHolder.put(key, ammo);
 	}

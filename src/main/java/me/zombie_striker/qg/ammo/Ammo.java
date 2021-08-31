@@ -60,7 +60,7 @@ public class Ammo extends CustomBaseObject implements ArmoryBaseObject{
 		AmmoType.addAmmo(this, name);
 	}
 
-	
+
 	public boolean hasCustomSkin() {
 		return ! NO_SKIN_STRING.equals(base64SkinURL);
 	}
@@ -70,11 +70,11 @@ public class Ammo extends CustomBaseObject implements ArmoryBaseObject{
 	public void setCustomSkin(String skin) {
 		this.base64SkinURL = skin;
 	}
-	
+
 	public void setSkullOwner(String s) {
 		skullowner = s;
 	}
-	
+
 	public boolean isSkull() {
 		return skullowner!=null;
 	}
@@ -97,7 +97,7 @@ public class Ammo extends CustomBaseObject implements ArmoryBaseObject{
 	}
 
 	@Override
-	public void set18Supported(boolean b) {		
+	public void set18Supported(boolean b) {
 	}
 
 
@@ -105,14 +105,12 @@ public class Ammo extends CustomBaseObject implements ArmoryBaseObject{
 	public boolean onRMB(Player e, ItemStack usedItem) {
 		QAMain.DEBUG("The item being click is ammo!");
 		Block b = e.getTargetBlock(null,6);
-		if (usedItem.getType() == Material.DIAMOND_HOE
-				&& (b.getType() == Material.DIRT
-						||b.getType() == Material.GRASS
-						|| b.getType() == Material.GRASS_PATH
-						|| b.getType() == MultiVersionLookup.getMycil()))
-			return true;
-		return false;
-	}
+        return usedItem.getType() == Material.DIAMOND_HOE
+                && (b.getType() == Material.DIRT
+                || b.getType() == Material.GRASS
+                || b.getType() == Material.GRASS_PATH
+                || b.getType() == MultiVersionLookup.getMycil());
+    }
 
 	@Override
 	public boolean onShift(Player shooter, ItemStack usedItem, boolean toggle) {

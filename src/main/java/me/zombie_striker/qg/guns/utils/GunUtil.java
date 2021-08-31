@@ -460,7 +460,7 @@ public class GunUtil {
 
 		if (g.isAutomatic()) {
 			rapidfireshooters.put(player.getUniqueId(), new BukkitRunnable() {
-				int slotUsed = player.getInventory().getHeldItemSlot();
+				final int slotUsed = player.getInventory().getHeldItemSlot();
 
 				@Override
 				public void run() {
@@ -479,10 +479,10 @@ public class GunUtil {
 
 					ItemStack temp = IronsightsHandler.getItemAiming(player);
 
-					if (QAMain.enableDurability && g.getDamage(temp) <= 0) {
+					if (QAMain.enableDurability && Gun.getDamage(temp) <= 0) {
 						player.playSound(player.getLocation(), WeaponSounds.METALHIT.getSoundName(), 1, 1);
 						rapidfireshooters.remove(player.getUniqueId());
-						QAMain.DEBUG("Canceld due to weapon durability = " + g.getDamage(temp));
+						QAMain.DEBUG("Canceld due to weapon durability = " + Gun.getDamage(temp));
 						cancel();
 						return;
 					}
@@ -758,11 +758,9 @@ public class GunUtil {
 	}
 
 	public static boolean isBreakable(Block b, Location l) {
-		if (b.getType().name().contains("GLASS"))
-			return true;
-		return false;
+        return b.getType().name().contains("GLASS");
 
-	}
+    }
 
 	@SuppressWarnings("deprecation")
 	public static boolean isSolid(Block b, Location l) {

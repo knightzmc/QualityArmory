@@ -11,9 +11,9 @@ public class QAHeadShotEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 
 	private boolean cancel = false;
-	private Entity damaged;
-	private Player player;
-	private Gun g;
+	private final Entity damaged;
+	private final Player player;
+	private final Gun g;
 
 	public QAHeadShotEvent(Entity damaged, Player p, Gun g) {
 		this.player = p;

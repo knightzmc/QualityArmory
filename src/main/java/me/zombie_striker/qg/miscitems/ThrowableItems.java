@@ -11,10 +11,10 @@ import me.zombie_striker.customitemmanager.ArmoryBaseObject;
 public interface ThrowableItems extends ArmoryBaseObject {
 
 	HashMap<Entity, ThrowableHolder> throwItems = new HashMap<>();
-	
+
 	class ThrowableHolder {
 		private Entity holder;
-		private UUID owner;
+		private final UUID owner;
 
 		private BukkitTask timer;
 

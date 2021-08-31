@@ -374,7 +374,7 @@ public class GunYMLLoader {
 		}
 
 		if (f2.contains("addMuzzleSmoke")) {
-			boolean addMuzzleSmoke = f2.contains("addMuzzleSmoke") ? f2.getBoolean("addMuzzleSmoke") : false;
+			boolean addMuzzleSmoke = f2.contains("addMuzzleSmoke") && f2.getBoolean("addMuzzleSmoke");
 			g.setUseMuzzleSmoke(addMuzzleSmoke);
 		}
 		if (f2.contains("delayForReload"))

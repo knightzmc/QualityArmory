@@ -15,9 +15,9 @@ import me.zombie_striker.customitemmanager.MaterialStorage;
 public class ArmorObject extends CustomBaseObject implements ArmoryBaseObject {
 
 	// TODO: Refine max heights
-	private double heightMin = 1;
-	private double heightMax = 1.5;
-	private double shiftingHeightOffset = -0.1;
+	private final double heightMin = 1;
+	private final double heightMax = 1.5;
+	private final double shiftingHeightOffset = -0.1;
 
 	private boolean negateHeadshots = false;
 
@@ -69,7 +69,7 @@ public class ArmorObject extends CustomBaseObject implements ArmoryBaseObject {
 			} catch (Error | Exception e3) {
 			}
 			return true;
-		
+
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class ArmorObject extends CustomBaseObject implements ArmoryBaseObject {
 	public boolean onLMB(Player e, ItemStack usedItem) {
 		// TODO Auto-generated method stub
 		return false;
-		
+
 	}
 	@Override
 	public ItemStack getItemStack() {

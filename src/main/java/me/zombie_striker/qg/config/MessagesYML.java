@@ -7,8 +7,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class MessagesYML {
 
-	private FileConfiguration c;
-	private File s;
+	private final FileConfiguration c;
+	private final File s;
 	public MessagesYML(File f) {
 		s = f;
 		if(!s.exists()) {
@@ -39,7 +39,7 @@ public class MessagesYML {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public FileConfiguration getConfig() {
 		return c;
 	}

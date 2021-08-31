@@ -24,15 +24,13 @@ public class ComplexHumanoidBoundingBox implements AbstractBoundingBox{
 		this.headWidthRadius = headRadius;
 
 	}
-	
+
 	@Override
 	public boolean intersects(Entity shooter, Location check, Entity base) {
 		if(intersectsHead(check, base))
 			return true;
-		if(intersectsBody(check, base))
-			return true;
-		return false;
-	}
+        return intersectsBody(check, base);
+    }
 
 	@Override
 	public boolean allowsHeadshots() {

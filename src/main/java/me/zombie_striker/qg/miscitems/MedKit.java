@@ -81,7 +81,7 @@ public class MedKit extends CustomBaseObject implements ArmoryBaseObject {
 
 					/*
 					 * medkitHeartUsage.add(healer.getUniqueId()); new BukkitRunnable() {
-					 * 
+					 *
 					 * @Override public void run() { medkitHeartUsage.remove(healer.getUniqueId());
 					 * } }.runTaskLater(Main.getInstance(), (long) (20 * Main.S_MEDKIT_HEARTDELAY));
 					 */
@@ -97,7 +97,7 @@ public class MedKit extends CustomBaseObject implements ArmoryBaseObject {
 				levelbar.append(ChatColor.BLACK);
 				levelbar.append(StringUtils.repeat(":", totalBars - healthBars));
 				try {
-					HotbarMessager.sendHotBarMessage(healer, ChatColor.RED + "[" + levelbar.toString() + ChatColor.RED
+					HotbarMessager.sendHotBarMessage(healer, ChatColor.RED + "[" + levelbar + ChatColor.RED
 							+ "] " + new DecimalFormat("##0.#").format((p2 + percent)) + " percent!");
 				} catch (Exception e2) {
 				}
@@ -136,7 +136,7 @@ public class MedKit extends CustomBaseObject implements ArmoryBaseObject {
 			levelbar.append(StringUtils.repeat(":", totalBars - healthBars));
 
 			HotbarMessager.sendHotBarMessage(healer,
-					ChatColor.RED + QAMain.S_MEDKIT_HEALING + "[" + levelbar.toString() + ChatColor.RED + "] "
+					ChatColor.RED + QAMain.S_MEDKIT_HEALING + "[" + levelbar + ChatColor.RED + "] "
 							+ QAMain.S_MEDKIT_BLEEDING + " " + (newRate < 0 ? ChatColor.DARK_RED : ChatColor.GRAY)
 							+ new DecimalFormat("##0.##").format(newRate) + ChatColor.GRAY + "+"
 							+ QAMain.bulletWound_BloodIncreasePerSecond);

@@ -10,8 +10,8 @@ public class QAWeaponPrepareShootEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 
 	private boolean cancel = false;
-	private Player player;
-	private Gun g;
+	private final Player player;
+	private final Gun g;
 
 	public QAWeaponPrepareShootEvent(Player p, Gun g) {
 		this.player = p;

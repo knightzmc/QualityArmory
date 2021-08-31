@@ -41,8 +41,8 @@ public class BoundingBoxManager {
 
 	//public static ComplexAnimalBoundingBox CAVE_SPIDER = new ComplexAnimalBoundingBox(0.5,0.5,0.15,0.5,0.2,0.4);
 	//TODO: SLIMES
-	private static HashMap<UUID, AbstractBoundingBox> entityBoundbox = new HashMap<>();
-	private static HashMap<EntityType, AbstractBoundingBox> entityTypeBoundingBox = new HashMap<>();
+	private static final HashMap<UUID, AbstractBoundingBox> entityBoundbox = new HashMap<>();
+	private static final HashMap<EntityType, AbstractBoundingBox> entityTypeBoundingBox = new HashMap<>();
 
 	public static AbstractBoundingBox getBoundingBox(Entity base) {
 		if (entityBoundbox.containsKey(base.getUniqueId()))

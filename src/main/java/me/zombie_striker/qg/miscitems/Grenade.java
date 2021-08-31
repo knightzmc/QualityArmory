@@ -24,7 +24,7 @@ import me.zombie_striker.qg.handlers.ExplosionHandler;
 
 public class Grenade extends CustomBaseObject implements ThrowableItems {
 
-	private ItemStack[] ing = null;
+	private final ItemStack[] ing = null;
 
 	double dmageLevel = 10;
 	double radius = 5;

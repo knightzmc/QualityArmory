@@ -253,10 +253,8 @@ public class QualityArmory {
 			return true;
 		if(isArmor(itemstack))
 			return true;
-		if(QAMain.expansionPacks.contains(MaterialStorage.getMS(is)))
-			return true;
-		return false;
-	}
+        return QAMain.expansionPacks.contains(MaterialStorage.getMS(is));
+    }
 
 	@SuppressWarnings("deprecation")
 	public static boolean isArmor(ItemStack is) {
@@ -420,7 +418,7 @@ public class QualityArmory {
 						sb.append(ChatColor.GRAY);
 						sb.append(StringUtils.repeat("#", (int) (20 * (1.0 * id / (20 * g.getReloadTime())))));
 						sb.append(ChatColor.DARK_GRAY);
-						sb.append(StringUtils.repeat("#", (int) (20 - ((int) (20.0 * id / (20 * g.getReloadTime()))))));
+						sb.append(StringUtils.repeat("#", 20 - ((int) (20.0 * id / (20 * g.getReloadTime())))));
 						p.sendTitle(QAMain.S_RELOADING_MESSAGE, sb.toString(), 0, 4, 0);
 					}
 				}.runTaskLater(QAMain.getInstance(), i);
@@ -590,7 +588,7 @@ public class QualityArmory {
 		return OLD_ItemFact.getIronSights();
 	}
 
-	
+
 
 
 	public static int getAmmoInInventory(Player player, Ammo a) {
@@ -659,5 +657,5 @@ public class QualityArmory {
 		}
 		return remaining <= 0;
 	}
-	
+
 }

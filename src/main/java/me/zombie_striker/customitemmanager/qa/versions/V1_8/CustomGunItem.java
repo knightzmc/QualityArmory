@@ -112,34 +112,34 @@ public class CustomGunItem extends AbstractCustomGunItem {
 	public void initItems(File dataFolder) {
 
 
-		List<String> stringsWoodRif = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 12),
-				getIngString(MultiVersionLookup.getWood(), 0, 2), getIngString(Material.REDSTONE, 0, 5)});
-		List<String> stringsGoldRif = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 12),
-				getIngString(Material.GOLD_INGOT, 0, 2), getIngString(Material.REDSTONE, 0, 5)});
+		List<String> stringsWoodRif = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 12),
+                getIngString(MultiVersionLookup.getWood(), 0, 2), getIngString(Material.REDSTONE, 0, 5));
+		List<String> stringsGoldRif = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 12),
+                getIngString(Material.GOLD_INGOT, 0, 2), getIngString(Material.REDSTONE, 0, 5));
 		List<String> stringsMetalRif = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 15), getIngString(Material.REDSTONE, 0, 5)});
+                getIngString(Material.IRON_INGOT, 0, 15), getIngString(Material.REDSTONE, 0, 5));
 		List<String> stringsPistol = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.REDSTONE, 0, 2)});
+                getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.REDSTONE, 0, 2));
 		List<String> stringsRPG = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 32), getIngString(Material.REDSTONE, 0, 10)});
+                getIngString(Material.IRON_INGOT, 0, 32), getIngString(Material.REDSTONE, 0, 10));
 
 		List<String> stringsHelmet = Arrays.asList(
-				new String[]{getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.OBSIDIAN, 0, 1)});
+                getIngString(Material.IRON_INGOT, 0, 5), getIngString(Material.OBSIDIAN, 0, 1));
 
-		List<String> stringsGrenades = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 6),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 10)});
+		List<String> stringsGrenades = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 6),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 10));
 
-		List<String> stringsAmmo = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 1),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 1), getIngString(Material.REDSTONE, 0, 1)});
-		List<String> stringsAmmoMusket = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 4),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 3),});
-		List<String> stringsAmmoRPG = Arrays.asList(new String[]{getIngString(Material.IRON_INGOT, 0, 4),
-				getIngString(MultiVersionLookup.getGunpowder(), 0, 6), getIngString(Material.REDSTONE, 0, 1)});
+		List<String> stringsAmmo = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 1),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 1), getIngString(Material.REDSTONE, 0, 1));
+		List<String> stringsAmmoMusket = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 4),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 3));
+		List<String> stringsAmmoRPG = Arrays.asList(getIngString(Material.IRON_INGOT, 0, 4),
+                getIngString(MultiVersionLookup.getGunpowder(), 0, 6), getIngString(Material.REDSTONE, 0, 1));
 
-		List<String> StringsWool = Arrays.asList(new String[]{getIngString(MultiVersionLookup.getWool(), 0, 8)});
+		List<String> StringsWool = Arrays.asList(getIngString(MultiVersionLookup.getWool(), 0, 8));
 
-		List<String> stringsHealer = Arrays.asList(new String[]{getIngString(MultiVersionLookup.getWool(), 0, 6),
-				getIngString(Material.GOLDEN_APPLE, 0, 1)});
+		List<String> stringsHealer = Arrays.asList(getIngString(MultiVersionLookup.getWool(), 0, 6),
+                getIngString(Material.GOLDEN_APPLE, 0, 1));
 
 
 		String additive = "_18";

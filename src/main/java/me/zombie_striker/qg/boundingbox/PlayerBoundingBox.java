@@ -13,8 +13,8 @@ public class PlayerBoundingBox implements AbstractBoundingBox{
 	private double bodyheight = 1.45;
 	private double headTopHeight = 1.95;
 
-	private double headTopCrouching = 1.49;
-	private double bodyheightCrouching =1;
+	private final double headTopCrouching = 1.49;
+	private final double bodyheightCrouching =1;
 
 	public PlayerBoundingBox() {
 		//BoundingBoxManager.addBoundingBox("defaulthumanoid", this);
@@ -26,7 +26,7 @@ public class PlayerBoundingBox implements AbstractBoundingBox{
 		this.headTopHeight = headTopHeight;
 
 	}
-	
+
 	@Override
 	public boolean intersects(Entity shooter, Location check, Entity base) {
 		boolean intersectsBodyWIDTH = BoundingBoxUtil.within2DWidth(base, check, bodyWidthRadius, bodyWidthRadius);

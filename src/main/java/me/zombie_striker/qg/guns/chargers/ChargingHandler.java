@@ -7,10 +7,10 @@ import me.zombie_striker.qg.guns.Gun;
 
 public interface ChargingHandler {
 
-	public boolean isCharging(Player player);
-	public boolean shoot(Gun g, Player player, ItemStack stack);
-	
-	public String getName();
+	boolean isCharging(Player player);
+	boolean shoot(Gun g, Player player, ItemStack stack);
+
+	String getName();
 
 	String getDefaultChargingSound();
 }

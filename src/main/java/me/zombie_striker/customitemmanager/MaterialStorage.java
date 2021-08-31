@@ -15,9 +15,9 @@ public class MaterialStorage {
 
 	private static final MaterialStorage EMPTY = new MaterialStorage(null, 0, 0);
 
-	private static List<MaterialStorage> store = new ArrayList<MaterialStorage>();
-	private int d;
-	private Material m;
+	private static final List<MaterialStorage> store = new ArrayList<MaterialStorage>();
+	private final int d;
+	private final Material m;
 	private int variant = 0;
 	private String specialValues = null;
 	private String specialValues2 = null;

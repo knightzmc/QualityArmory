@@ -21,13 +21,13 @@ import net.citizensnpcs.api.npc.NPC;
 
 public class Gunnergoal implements Goal {
 
-	private Gunner gunner;
-	private NPC npc;
+	private final Gunner gunner;
+	private final NPC npc;
 
 	private Entity target;
-	private Gun g;
+	private final Gun g;
 
-	private int cuttoffDistance = 400;
+	private final int cuttoffDistance = 400;
 
 	private int internalAmmoCount;
 	private int maxReloadCooldown = 5;
@@ -36,7 +36,7 @@ public class Gunnergoal implements Goal {
 	private int shootcooldown = 0;
 
 	private int searchCooldown = 0;
-	private int searchCooldownMax = 35;
+	private final int searchCooldownMax = 35;
 
 	public Gunnergoal(Gunner gunner2, Gun g) {
 		gunner = gunner2;

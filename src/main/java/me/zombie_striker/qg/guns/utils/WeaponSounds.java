@@ -32,9 +32,9 @@ public enum WeaponSounds {
 
 	DEFAULT("hurt");
 
-	private String soundname;
+	private final String soundname;
 
-	private WeaponSounds(String s) {
+	WeaponSounds(String s) {
 		this.soundname = s;
 	}
 

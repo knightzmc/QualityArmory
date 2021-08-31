@@ -25,7 +25,7 @@ public class SentinelQAHandler extends SentinelIntegration {
 	}
 
 
-	private HashMap<UUID,Long> lastTimeShot = new HashMap<>();
+	private final HashMap<UUID,Long> lastTimeShot = new HashMap<>();
 
 	@SuppressWarnings("deprecation")
 	@Override

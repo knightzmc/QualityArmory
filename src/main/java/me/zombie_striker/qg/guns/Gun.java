@@ -86,7 +86,7 @@ public class Gun extends CustomBaseObject implements ArmoryBaseObject, Comparabl
 
 	private String killedByMessage = "%player% was shot by %killer% using a %name%";
 
-	private HashMap<UUID, Long> lastRMB = new HashMap<>();
+	private final HashMap<UUID, Long> lastRMB = new HashMap<>();
 
 	@Deprecated
 	public Gun(String name, MaterialStorage id, WeaponType type, boolean h, Ammo am, double acc, double swaymult,

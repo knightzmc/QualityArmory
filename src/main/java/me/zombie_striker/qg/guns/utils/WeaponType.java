@@ -5,7 +5,7 @@ public enum WeaponType {
 			false), FLASHBANGS(false), INCENDARY_GRENADES(false),MOLOTOV(false),PROXYMINES(false), STICKYGRENADE(false), MINES(
 					false), MELEE(false),  MISC(false), AMMO(false), HELMET(false), MEDKIT(false), LAZER(true),BACKPACK(false),PARACHUTE(false),CUSTOM(false);
 
-	private boolean isGun;
+	private final boolean isGun;
 
 	public boolean isGun() {
 		return isGun;

@@ -47,10 +47,8 @@ public class BlockCollisionUtil {
 		if(b.getLocation().getY()+getHeight(b)>loc.getY())
 			return true;
 		Block temp = b.getRelative(0,-1,0);
-		if(temp.getLocation().getY()+getHeight(temp)>loc.getY())
-			return true;
-		return false;
-	}
+        return temp.getLocation().getY() + getHeight(temp) > loc.getY();
+    }
 
 
 	public static boolean isSolid(Block b, Location l) {
@@ -70,27 +68,19 @@ public class BlockCollisionUtil {
 				return true;
 		}
 		if (b.getType().name().contains("SLAB") || b.getType().name().contains("STEP")) {
-			if (!QAMain.blockbullet_halfslabs && ((l.getY() - l.getBlockY() > 0.5 && b.getData() == 0)
-					|| (l.getY() - l.getBlockY() <= 0.5 && b.getData() == 1)))
-				return false;
-			return true;
-		}
+            return QAMain.blockbullet_halfslabs || ((!(l.getY() - l.getBlockY() > 0.5) || b.getData() != 0)
+                    && (!(l.getY() - l.getBlockY() <= 0.5) || b.getData() != 1));
+        }
 		if (b.getType().name().contains("BED_") || b.getType().name().contains("_BED")
 				|| b.getType().name().contains("DAYLIGHT_DETECTOR")) {
-			if (!QAMain.blockbullet_halfslabs && (l.getY() - l.getBlockY() > 0.5))
-				return false;
-			return true;
-		}
+            return QAMain.blockbullet_halfslabs || (!(l.getY() - l.getBlockY() > 0.5));
+        }
 		if (b.getType().name().contains("DOOR")) {
-			if (QAMain.blockbullet_door)
-				return true;
-			return false;
-		}
+            return QAMain.blockbullet_door;
+        }
 		if (b.getType().name().contains("GLASS")) {
-			if (QAMain.blockbullet_glass)
-				return true;
-			return false;
-		}
+            return QAMain.blockbullet_glass;
+        }
 
 		if (b.getType().name().contains("STAIR")) {
 			if (b.getData() < 4 && (l.getY() - l.getBlockY() < 0.5))
@@ -117,9 +107,6 @@ public class BlockCollisionUtil {
 		if (b.getType().name().endsWith("FERN")) {
 			return false;
 		}
-		if (b.getType().isOccluding()) {
-			return true;
-		}
-		return false;
-	}
+        return b.getType().isOccluding();
+    }
 }

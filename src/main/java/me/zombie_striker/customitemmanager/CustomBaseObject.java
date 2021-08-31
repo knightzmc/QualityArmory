@@ -7,8 +7,8 @@ import java.util.List;
 
 public class CustomBaseObject {
 
-	private String name;
-	private MaterialStorage base;
+	private final String name;
+	private final MaterialStorage base;
 	private List<String> lore;
 	private String displayname;
 	private boolean customAnimations;

@@ -22,7 +22,7 @@ public class ExperienceManager {
 	// this is to stop the lookup table growing without control
 	private static int hardMaxLevel = 100000;
 
-	private static int xpTotalToReachLevel[];
+	private static int[] xpTotalToReachLevel;
 
 	private final WeakReference<Player> player;
 	private final String playerName;
@@ -183,7 +183,7 @@ public class ExperienceManager {
 		Player player = getPlayer();
 
 		int lvl = player.getLevel();
-		int cur = getXpForLevel(lvl) + (int) Math.round(getXpNeededToLevelUp(lvl) * player.getExp());
+		int cur = getXpForLevel(lvl) + Math.round(getXpNeededToLevelUp(lvl) * player.getExp());
 		return cur;
 	}
 

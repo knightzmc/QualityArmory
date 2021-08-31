@@ -35,7 +35,7 @@ public class PumpactionReloader implements ReloadingHandler {
 			final boolean k = (i + 1 == amountReloading);
 			final int finalI = i;
 			new BukkitRunnable() {
-				int temp = player.getInventory().getHeldItemSlot();
+				final int temp = player.getInventory().getHeldItemSlot();
 
 				@Override
 				public void run() {

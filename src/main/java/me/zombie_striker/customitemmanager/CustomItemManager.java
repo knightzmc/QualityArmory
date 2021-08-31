@@ -10,7 +10,7 @@ import java.util.Set;
 public class CustomItemManager {
 
 	private static String resourcepack = null;
-	private static HashMap<String, AbstractItem> customItemTypes = new HashMap<>();
+	private static final HashMap<String, AbstractItem> customItemTypes = new HashMap<>();
 
 	public static String getResourcepack() {
 		return resourcepack;

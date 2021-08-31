@@ -34,9 +34,10 @@ public class BurstFireCharger implements ChargingHandler {
 	//	final AttachmentBase attach = QualityArmory.getGunWithAttchments(stack);
 		GunUtil.playShoot(g,  player);
 		shooters.put(player.getUniqueId(), new BukkitRunnable() {
-			int slotUsed = player.getInventory().getHeldItemSlot();
+			final int slotUsed = player.getInventory().getHeldItemSlot();
 			@SuppressWarnings("deprecation")
-			boolean offhand = QualityArmory.isIronSights(player.getItemInHand());
+            final
+            boolean offhand = QualityArmory.isIronSights(player.getItemInHand());
 			int shotCurrently = 1;
 
 			@Override
