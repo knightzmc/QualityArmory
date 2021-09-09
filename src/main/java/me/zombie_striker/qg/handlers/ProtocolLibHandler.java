@@ -7,7 +7,7 @@ import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
-import me.zombie_striker.qg.Pair;
+import com.mojang.datafixers.util.Pair;
 import me.zombie_striker.qg.QAMain;
 import me.zombie_striker.qg.api.QualityArmory;
 import org.bukkit.Bukkit;
@@ -132,11 +132,7 @@ public class ProtocolLibHandler {
                                 args[1] = boolean.class;
                                 nbtTag.getClass().getMethod("setBoolean", args).invoke(nbtTag, "Charged", true);
                                 is.getClass().getMethod("setTag", nbtTag.getClass()).invoke(is, nbtTag);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
-                            } catch (NoSuchMethodException e) {
+                            } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                                 e.printStackTrace();
                             }
                             if (ReflectionsUtil.isVersionHigherThan(1, 16)) {
@@ -146,7 +142,7 @@ public class ProtocolLibHandler {
                                     if (o.toString().contains("MAINHAND")) {
                                         //noinspection unchecked
                                         Pair<Object, Object> pair = (Pair<Object, Object>) o;
-                                        Pair<Object, Object> newPair = new Pair<>(pair.getKey(), is);
+                                        Pair<Object, Object> newPair = new Pair<>(pair.getFirst(), is);
                                         list.set(list.indexOf(pair), newPair);
                                     } else if (o.toString().contains("OFFHAND")) {
                                         list.remove(o);
